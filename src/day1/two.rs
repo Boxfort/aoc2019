@@ -9,7 +9,7 @@ fn calculate_fuel_recursive(mass: &i32) -> i32 {
 }
 
 fn solve() -> i32 {
-    let input = crate::day1::get_input();
+    let input = super::get_input();
 
     input.iter().fold(0, |total_fuel, mass| {
         total_fuel + calculate_fuel_recursive(mass)
@@ -17,9 +17,11 @@ fn solve() -> i32 {
 }
 
 mod tests {
+    use super::solve;
+
     #[test]
-    fn test_day2() {
-        let result = crate::day1::two::solve();
+    fn test_day1_part2() {
+        let result = solve();
         assert_eq!(result, 4726527);
     }
 }
