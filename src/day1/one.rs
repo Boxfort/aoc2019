@@ -1,21 +1,13 @@
-use std::fs::File;
-use std::io::{prelude::BufRead, BufReader};
-use std::env;
-use std::env::current_dir;
-
 fn calculate_fuel(mass: &i32) -> i32 {
     (mass / 3) - 2
 }
 
 fn solve() -> i32 {
-    let input = super::get_input();
-    let mut total_fuel: i32 = 0;
+    let input = crate::day1::get_input();
 
-    input.iter().for_each(|mass| {
-        total_fuel += calculate_fuel(mass);
-    });
-
-    total_fuel
+    input.iter().fold(0, |total_fuel, mass| {
+        total_fuel + calculate_fuel(mass)
+    })
 }
 
 mod tests {

@@ -9,14 +9,11 @@ fn calculate_fuel_recursive(mass: &i32) -> i32 {
 }
 
 fn solve() -> i32 {
-    let input = super::get_input();
-    let mut total_fuel: i32 = 0;
+    let input = crate::day1::get_input();
 
-    input.iter().for_each(|mass| {
-        total_fuel += calculate_fuel_recursive(mass);
-    });
-
-    total_fuel
+    input.iter().fold(0, |total_fuel, mass| {
+        total_fuel + calculate_fuel_recursive(mass)
+    })
 }
 
 mod tests {
