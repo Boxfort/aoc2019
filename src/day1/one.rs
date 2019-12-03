@@ -14,7 +14,7 @@ mod tests {
     use super::solve;
 
     #[test]
-    fn test_day1_one() {
+    fn test_day1_part1() {
         let result = solve();
         assert_eq!(result, 3152919);
     }

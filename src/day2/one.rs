@@ -4,22 +4,22 @@ fn solve() -> usize {
     input[2] = 2;
 
     for i in (0..input.len()).step_by(4) {
-        match input[i] {
+        let dest = input[i+3];
+
+        input[dest] = match input[i] {
             // Add
             1 => {
                 let x = input[i+1];
                 let y = input[i+2];
-                let z = input[i+3];
 
-                input[z] = input[x] + input[y];
+                input[x] + input[y]
             },
             // Multiply
             2 => {
                 let x = input[i+1];
                 let y = input[i+2];
-                let z = input[i+3];
 
-                input[z] =  input[x] * input[y];
+                input[x] * input[y]
             },
             // Exit
             99 => {
