@@ -19,15 +19,10 @@ fn is_valid(pass: Vec<u8>) -> bool {
 }
 
 fn solve() -> usize{
-    let mut count = 0;
-
-    for x in 372037..905157 {
-        if is_valid(x.to_string().into_bytes()) {
-            count += 1;
-        }
-    }
-
-    count
+    (372037..905157)
+        .step_by(1)
+        .filter(|x| is_valid(x.to_string().into_bytes()))
+        .count()
 }
 
 mod tests {
