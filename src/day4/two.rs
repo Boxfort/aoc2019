@@ -1,21 +1,28 @@
+use std::collections::HashMap;
+
 fn is_valid(pass: Vec<u8>) -> bool {
-    let mut adj = false;
-    let mut prev: u8 = 0;
-    let mut max: u8 = 0;
+    let mut occurrences: HashMap<u8, u8> = HashMap::new();
+    let mut prev: u8 = 10;
     for val in pass {
-        if val == prev {
-            adj = true;
-        }
-        if val < max {
+        occurrences.insert(
+            val,
+            *occurrences.get(&val).unwrap_or(&0u8) + 1
+        );
+
+        if val < prev {
             return false;
         }
-        if val > prev {
-            max = val;
-        }
+
         prev = val;
     }
 
-    adj
+    for val in occurrences {
+        if val.1 == 2 {
+            return true;
+        }
+    }
+
+    false
 }
 
 fn solve() -> usize{
@@ -31,6 +38,6 @@ mod tests {
     #[test]
     fn test_day4_part2() {
         let result = solve();
-        assert_eq!(result, 481)
+        assert_eq!(result, 299)
     }
 }
